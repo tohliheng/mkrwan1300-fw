@@ -91,7 +91,7 @@ static void receive(char rx);
 
 /* Functions Definition ------------------------------------------------------*/
 
-void vcom_Init(void)
+void vcom_uart_Init(void)
 {
   LL_LPUART_InitTypeDef LPUART_InitStruct;
 
@@ -112,7 +112,7 @@ void vcom_Init(void)
    */
   LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI);
   UARTX_CLK_ENABLE();
-  vcom_IoInit();
+  vcom_uart_IoInit();
 
   LPUART_InitStruct.BaudRate = 19200;
   LPUART_InitStruct.DataWidth = LL_LPUART_DATAWIDTH_8B;
@@ -148,7 +148,7 @@ void vcom_Init(void)
   uart_context.RxState = HAL_UART_STATE_READY;
 }
 
-void vcom_DeInit(void)
+void vcom_uart_DeInit(void)
 {
   LL_LPUART_DeInit(UARTX);
 
@@ -166,7 +166,7 @@ void vcom_DeInit(void)
   NVIC_DisableIRQ(UARTX_IRQn);
 }
 
-void vcom_Send(const char *format, ...)
+void vcom_uart_Send(const char *format, ...)
 {
   va_list args;
   static __IO uint16_t len = 0;
@@ -224,7 +224,7 @@ void vcom_Send(const char *format, ...)
   va_end(args);
 }
 
-void vcom_ReceiveInit(void)
+void vcom_uart_ReceiveInit(void)
 {
   if (uart_context.RxState != HAL_UART_STATE_READY)
   {
@@ -246,7 +246,7 @@ void vcom_ReceiveInit(void)
   HW_UNLOCK(&uart_context);
 }
 
-void vcom_IoInit(void)
+void vcom_uart_IoInit(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
 
@@ -273,7 +273,7 @@ void vcom_IoInit(void)
 
 }
 
-void vcom_IoDeInit(void)
+void vcom_uart_IoDeInit(void)
 {
   GPIO_InitTypeDef GPIO_InitStructure = {0};
 
@@ -312,7 +312,7 @@ uint8_t GetNewChar(void)
   return NewChar;
 }
 
-void vcom_IRQHandler(void)
+void vcom_uart_IRQHandler(void)
 {
   int rx_ready = 0;
   char rx;

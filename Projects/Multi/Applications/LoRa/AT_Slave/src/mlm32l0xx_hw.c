@@ -295,7 +295,7 @@ void HW_DeInit(void)
 {
   HW_SPI_DeInit();
   Radio.IoDeInit();
-  vcom_DeInit();
+  vcom_uart_DeInit();
 
   McuInitialized = RESET;
 }

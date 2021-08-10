@@ -79,42 +79,42 @@ extern "C" {
  * @param  None
  * @retval None
  */
-void vcom_Init(void);
+void vcom_uart_Init(void);
 
 /**
  * @brief  DeInit the VCOM.
  * @param  None
  * @retval None
  */
-void vcom_DeInit(void);
+void vcom_uart_DeInit(void);
 
 /**
  * @brief  Init the VCOM IOs.
  * @param  None
  * @retval None
  */
-void vcom_IoInit(void);
+void vcom_uart_IoInit(void);
 
 /**
  * @brief  Init the VCOM RX
  * @param  None
  * @retval None
  */
-void vcom_ReceiveInit(void);
+void vcom_uart_ReceiveInit(void);
 
 /**
  * @brief  DeInit the VCOM IOs.
  * @param  None
  * @retval None
  */
-void vcom_IoDeInit(void);
+void vcom_uart_IoDeInit(void);
 
 /**
  * @brief  Sends string on com port
  * @param  String
  * @retval None
  */
-void vcom_Send(const char *format, ...);
+void vcom_uart_Send(const char *format, ...);
 
 /**
  * @brief  Checks if a new character has been received on com port
@@ -135,11 +135,11 @@ uint8_t GetNewChar(void);
  * @param  None
  * @retval None
  */
-void vcom_IRQHandler(void);
+void vcom_uart_IRQHandler(void);
 
 /* Exported macros -----------------------------------------------------------*/
 #if 1
-#define PRINTF(...)     vcom_Send(__VA_ARGS__)
+#define PRINTF(...)     vcom_uart_Send(__VA_ARGS__)
 #else
 #define PRINTF(...)
 #endif

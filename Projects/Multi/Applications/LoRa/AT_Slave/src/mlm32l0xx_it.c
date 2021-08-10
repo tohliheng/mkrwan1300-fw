@@ -107,7 +107,7 @@ void EXTI4_15_IRQHandler(void)
 
 void UARTX_IRQHandler(void)
 {
-  vcom_IRQHandler();
+  vcom_uart_IRQHandler();
 }
 
 /* Private functions ---------------------------------------------------------*/

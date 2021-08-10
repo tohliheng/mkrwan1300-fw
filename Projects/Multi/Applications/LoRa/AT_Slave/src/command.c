@@ -678,8 +678,8 @@ static void parse_cmd(const char *cmd);
 
 void CMD_Init(void)
 {
-  vcom_Init();
-  vcom_ReceiveInit();
+  vcom_uart_Init();
+  vcom_uart_ReceiveInit();
 }
 
 void CMD_Process(void)
